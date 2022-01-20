@@ -1,0 +1,41 @@
+// Media breakpoints UP
+@mixin breakpoint-xs-up
+    @media (min-width: $xs)
+        @content 
+
+@mixin breakpoint-sm-up
+    @media (min-width: $sm)
+        @content 
+
+@mixin breakpoint-md-up
+    @media (min-width: $md)
+        @content 
+
+@mixin breakpoint-lg-up
+    @media (min-width: $lg)
+        @content       
+
+@mixin breakpoint-xl-up
+    @media (min-width: $xl)
+        @content  
+
+// Media breakpoints DOWN
+@mixin breakpoint-xs-down
+    @media (max-width: $xs)
+        @content 
+
+@mixin breakpoint-sm-down
+    @media (max-width: $sm)
+        @content 
+
+@mixin breakpoint-md-down
+    @media (max-width: $md)
+        @content 
+
+@mixin breakpoint-lg-down
+    @media (max-width: $lg)
+        @content       
+
+@mixin breakpoint-xl-down
+    @media (max-width: $xl)
+        @content  
