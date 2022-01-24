@@ -4,7 +4,7 @@ nav
   padding: .75rem 1rem
   width: 100%
   z-index: 999
-  background-color:#fff
+  background-color: $main-background-color
 
   .content
     @include content
@@ -53,7 +53,7 @@ nav
     transform: translateX(200%)
     transition: transform .4s ease-in-out
     text-align: center
-    background-color: #fff
+    background-color: $main-background-color
 
     & li
       list-style: none
@@ -109,8 +109,15 @@ nav
     list-style: none
   
   &__item
-    margin-left: 1rem    
+    margin-left: 1rem
     text-transform: uppercase
+
+    &:hover
+      opacity: .7
+
+  &__icon
+    font-size: 1rem
+    color: $main-black
 
 @include breakpoint-xs-up
   .menu-items li
@@ -118,4 +125,4 @@ nav
 
 @include breakpoint-lg-up
   nav
-    padding: 1rem
+    padding: 2rem 0
