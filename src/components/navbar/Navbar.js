@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import DesktopNavbar from './DesktopNavbar'
+import LoginNavbar from './loginNavbar';
 import MobileNavbar from './MobileNavbar'
 
 export default function Navbar() {
@@ -23,7 +24,10 @@ export default function Navbar() {
         <h2>Sportify</h2>
         {width < 1000
           ? <MobileNavbar />
-          : <DesktopNavbar />
+          : <>
+            <DesktopNavbar />
+            <LoginNavbar />
+          </>
         }
       </div>
     </nav>

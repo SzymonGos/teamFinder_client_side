@@ -100,12 +100,16 @@ nav
     transform: rotate(-40deg)
     
 .desktop
+  display: flex
+
   &__items
+    font-size: .9rem
     display: flex
+    align-items: center
     list-style: none
-    
+  
   &__item
-    margin-left: 1rem
+    margin-left: 1rem    
     text-transform: uppercase
 
 @include breakpoint-xs-up

@@ -1,14 +1,11 @@
-import React, { useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
-import { links } from '../../services/guestLinks';
+import React, { useRef } from 'react'
+import {  NavLink } from 'react-router-dom'
 
 export default function MobileNavbar() {
 
-  const [selectedItemID, setSelectedItemID] = useState();
   const checkbox = useRef(null);
 
-  const handleChange = (id) => {
-    setSelectedItemID(id)
+  const handleChange = () => {
     checkbox.current.checked = false
   }
 
@@ -25,20 +22,46 @@ export default function MobileNavbar() {
         <span className="line line3"></span>
       </div>
       <ul className='menu-items'>
-        {links.map(link => {
-          const { id, url, text } = link
-          return (
-            <li key={id}>
-              <Link
-                to={url}
-                onClick={() => handleChange(id)}
-                className={id === selectedItemID ? "active" : ""}
-              >
-                {text}
-              </Link>
-            </li>
-          )
-        })}
+        <li>
+          <NavLink
+            to='/home'
+            className=""
+            activeClassName="active"
+            onClick={() => handleChange()}
+          >
+            home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to='/map'
+            className=""
+            activeClassName="active"
+            onClick={() => handleChange()}
+          >
+            map
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to='/about'
+            className=""
+            activeClassName="active"
+            onClick={() => handleChange()}
+          >
+            about
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to='/login'
+            className=""
+            activeClassName="active"
+            onClick={() => handleChange()}
+          >
+            login
+          </NavLink>
+        </li>
       </ul>
     </section>
   )
