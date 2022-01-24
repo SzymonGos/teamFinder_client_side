@@ -1,0 +1,31 @@
+.button
+  background-color: #fff
+  border: 0 solid #e2e8f0
+  border-radius: 1.5rem
+  box-sizing: border-box
+  color: #0d172a
+  cursor: pointer
+  display: inline-block
+  font-family: Raleway, sans-serif
+  font-size: .9rem
+  font-weight: 600
+  line-height: 1
+  padding: .6rem 1.6rem
+  text-align: center
+  text-decoration: none $main-black solid
+  text-decoration-thickness: auto
+  text-transform: capitalize
+  transition: all .1s cubic-bezier(.4, 0, .2, 1)
+  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25)
+  user-select: none
+  -webkit-user-select: none
+  touch-action: manipulation
+
+  &:hover
+    background-color: $navy-blue2
+    color: #fff
+
+  
+@include breakpoint-xs-down
+  .button span
+    display: none
