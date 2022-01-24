@@ -4,13 +4,11 @@ import { links } from '../../services/guestLinks';
 
 export default function MobileNavbar() {
 
-  const [selectedID, setSelectedID] = useState();
+  const [selectedItemID, setSelectedItemID] = useState();
   const checkbox = useRef(null);
 
-
-
   const handleChange = (id) => {
-    setSelectedID(id)
+    setSelectedItemID(id)
     checkbox.current.checked = false
   }
 
@@ -26,7 +24,7 @@ export default function MobileNavbar() {
         <span className="line line2"></span>
         <span className="line line3"></span>
       </div>
-      <div className='menu-items'>
+      <ul className='menu-items'>
         {links.map(link => {
           const { id, url, text } = link
           return (
@@ -34,14 +32,14 @@ export default function MobileNavbar() {
               <Link
                 to={url}
                 onClick={() => handleChange(id)}
-                className={id === selectedID ? "active" : ""}
+                className={id === selectedItemID ? "active" : ""}
               >
                 {text}
               </Link>
             </li>
           )
         })}
-      </div>
+      </ul>
     </section>
   )
 }

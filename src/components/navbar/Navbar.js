@@ -1,11 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import DesktopNavbar from './DesktopNavbar'
 import MobileNavbar from './MobileNavbar'
 
 export default function Navbar() {
+
+  const [width, seWidth] = useState(window.innerWidth);
+
+  const checkWidthSize = () => {
+    seWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', checkWidthSize);
+    return () => {
+      window.removeEventListener('resize', checkWidthSize);
+    };
+  }, []);
+
   return (
     <nav>
-      <h2>Sportify</h2>
-      <MobileNavbar />
+      <div className='content'>
+        <h2>Sportify</h2>
+        {width < 1000
+          ? <MobileNavbar />
+          : <DesktopNavbar />
+        }
+      </div>
     </nav>
   )
 }

@@ -14,11 +14,6 @@ export const links = [
   {
     id: 3,
     url: '#',
-    text: 'about',
-  },
-  {
-    id: 4,
-    url: '#',
     text: 'login',
   }
 ];

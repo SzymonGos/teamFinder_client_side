@@ -4,9 +4,12 @@ nav
   padding: .75rem 1rem
   width: 100%
   z-index: 999
-  display: flex
-  justify-content: space-between
   background-color:#fff
+
+  .content
+    @include content
+    display: flex
+    justify-content: space-between
   
   h2
     z-index: 999
@@ -48,7 +51,7 @@ nav
     z-index: 50
     left: 0
     transform: translateX(200%)
-    transition: transform .2s ease-in-out
+    transition: transform .4s ease-in-out
     text-align: center
     background-color: #fff
 
@@ -56,8 +59,7 @@ nav
       list-style: none
       padding: .75rem
       text-transform: uppercase
-      opacity: 0
-      font-weight: 200
+      opacity: 0      
 
     .active
       font-weight: 600
@@ -96,8 +98,20 @@ nav
 
   input[type="checkbox"]:checked ~ .hamburger-lines .line3 
     transform: rotate(-40deg)
-
+    
+.desktop
+  &__items
+    display: flex
+    list-style: none
+    
+  &__item
+    margin-left: 1rem
+    text-transform: uppercase
 
 @include breakpoint-xs-up
   .menu-items li
     font-size: 1.2rem
+
+@include breakpoint-lg-up
+  nav
+    padding: 1rem
