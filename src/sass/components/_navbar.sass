@@ -1,0 +1,128 @@
+nav
+  position: fixed
+  top: 0
+  padding: .75rem 1rem
+  width: 100%
+  z-index: 999
+  background-color: $main-background-color
+
+  .content
+    @include content
+    display: flex
+    justify-content: space-between
+  
+  h2
+    z-index: 999
+    font-size: 1.2rem
+
+.mobile
+  .checkbox 
+    position: absolute
+    display: block
+    height: 1.4rem
+    width: 1.4rem
+    z-index: 95
+    opacity: 0
+    cursor: pointer
+
+  .hamburger-lines 
+    display: block
+    height: 1.2rem
+    width: 1.6rem
+    position: relative
+    z-index: 90
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
+  .hamburger-lines .line 
+    display: block
+    height: 3px
+    width: 100%
+    border-radius: 10px
+    background: $main-black
+
+  .menu-items
+    position: fixed
+    height: 100vh
+    overflow: hidden
+    width: 100%
+    padding-top: 4rem
+    z-index: 50
+    left: 0
+    transform: translateX(200%)
+    transition: transform .4s ease-in-out
+    text-align: center
+    background-color: $main-background-color
+
+    & li
+      list-style: none
+      padding: .75rem
+      text-transform: uppercase
+      opacity: 0      
+
+    .active
+      font-weight: 600
+
+  .hamburger-lines .line1 
+    transform-origin: 0% 0%
+    transition: transform 0.3s ease-in-out
+
+  .hamburger-lines .line2 
+    transition: transform 0.1s ease-in-out
+
+  .hamburger-lines .line3 
+    transform-origin: 0% 100%
+    transition: transform 0.3s ease-in-out
+
+
+  input[type="checkbox"]:checked ~ .menu-items
+    transform: translate(0)
+    transition: transform .5s ease-in-out
+
+  input[type="checkbox"]:checked ~ .menu-items li
+    display: block
+    animation: fadeIn 1s .3s forwards
+    opacity: 0
+    @keyframes fadeIn
+      to   
+        opacity: 1
+
+  input[type="checkbox"]:checked ~ .hamburger-lines .line1 
+    transform: rotate(40deg)
+
+
+  input[type="checkbox"]:checked ~ .hamburger-lines .line2 
+    transform: scaleY(0)
+
+
+  input[type="checkbox"]:checked ~ .hamburger-lines .line3 
+    transform: rotate(-40deg)
+    
+.desktop
+  display: flex
+
+  &__items
+    font-size: .9rem
+    display: flex
+    align-items: center
+    list-style: none
+  
+  &__item
+    margin-left: 1rem
+    text-transform: uppercase
+
+    &:hover
+      opacity: .7
+
+  &__icon
+    font-size: 1rem
+    color: $main-black
+
+@include breakpoint-xs-up
+  .menu-items li
+    font-size: 1.2rem
+
+@include breakpoint-lg-up
+  nav
+    padding: 2rem 0
