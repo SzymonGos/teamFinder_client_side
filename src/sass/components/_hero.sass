@@ -1,8 +1,7 @@
 .hero
-  margin: 0 1rem
-
   &__wrapper
-    text-align: center   
+    text-align: center
+    margin: 0 1rem
 
   &__title
     margin-bottom: 1rem
@@ -15,3 +14,28 @@
     line-height: 1.4rem
     font-weight: 300
     font-size: .9rem
+
+  &__buttons
+    margin: 3rem 1rem 2rem
+    display: flex
+    justify-content: space-evenly
+    flex-direction: row
+    flex-wrap: wrap
+    row-gap: 2rem
+
+  &__icon
+    margin-right: .3rem
+
+.banner
+  height: 500px
+  background-color: #fff
+  
+  &__img
+    height: 100%
+    width: 100%
+    object-fit: cover
+  
+@include breakpoint-xs-down
+  .hero
+    &__icon
+      margin: 0
