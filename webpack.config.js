@@ -3,7 +3,6 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require("copy-webpack-plugin");
 const LinkTypePlugin = require('html-webpack-link-type-plugin').HtmlWebpackLinkTypePlugin;
 require('dotenv').config({ path: './.env' });
 
@@ -68,11 +67,6 @@ module.exports = {
       filename: 'index.html',
       inject: 'body',
     }),
-    // new CopyPlugin({
-    //   patterns: [
-    //     { from: 'src/assets/images', to: 'images' }
-    //   ]
-    // }),
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(process.env)
     }),
