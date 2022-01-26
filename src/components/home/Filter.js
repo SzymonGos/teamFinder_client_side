@@ -3,13 +3,11 @@ import Select, { components } from 'react-select';
 import { customStyles } from './selectStyles';
 import { BsChevronDown } from 'react-icons/bs';
 
-
-
 const options = [
   { value: 'all', label: 'All' },
   { value: 'football', label: 'Football' },
   { value: 'volleyball', label: 'Volleyball' },
-  { value: 'baksetball', label: 'Baksetball' },
+  { value: 'basketball', label: 'Basketball' },
   { value: 'tennis', label: 'Tennis' },
 ];
 
@@ -40,7 +38,12 @@ export default function Filter() {
           options={options}
           placeholder={'Select Sport'}
         />
-        <input type="text" placeholder='address' />
+        <input
+          type="text"
+          placeholder='Address'
+          className='filter__input'
+        />
+
       </form>
     </div>
   );
