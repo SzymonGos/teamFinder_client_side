@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Select, { components } from 'react-select';
 import { customStyles } from './selectStyles';
 import { BsChevronDown } from 'react-icons/bs';
+import FilterPrice from './FilterPrice';
 
 const options = [
   { value: 'all', label: 'All' },
@@ -43,7 +44,7 @@ export default function Filter() {
           placeholder='Address'
           className='filter__input'
         />
-
+        <FilterPrice />
       </form>
     </div>
   );
