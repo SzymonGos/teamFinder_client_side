@@ -3,7 +3,7 @@
   flex-direction: column
 
 .filter
-  margin: 1rem 1rem 5rem
+  margin: 1rem 1rem 4rem
 
   &__title
     font-weight: 200
@@ -14,22 +14,25 @@
     flex-direction: column
 
   &__input
+    padding: .8rem .7rem
     font-family: Inter, Raleway, sans-serif
-    padding: .4rem .7rem
+    color: $main-black
     font-size: 1rem
     border: none
-    color: $main-black
+    outline: none
 
     &::placeholder
       font-weight: 200
       font-size: 1rem
+    
+// Filter accordion
 
 .accordion
   margin: 1rem 0
   cursor: default
 
   &__item
-    margin: 1rem 0
+    margin: 1rem 0    
     border-bottom: 1px solid $main-black
   
   &__title
@@ -46,3 +49,29 @@
   height: 100px
   overflow: hidden
   transition: height .3s cubic-bezier(.39, .11, .37, .99) 0s
+
+// Tabs component
+
+.tabs-wrapper
+  margin-bottom: 4rem
+  
+  .tabs
+    display: flex
+
+    &__content
+      margin: 0 1rem
+
+// tab button
+.tab-btn
+  padding: .8rem 1.6rem
+  width: 100%
+  border: none
+  @include main-button
+  
+  &:hover
+    background-color: $navy-blue2
+    color: #fff
+
+  &.focus
+    background-color: $navy-blue2
+    color: #fff

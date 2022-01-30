@@ -1,11 +1,26 @@
 @mixin content
-    max-width: 700px
+  max-width: 700px
+  margin: 0 auto
+
+  @include breakpoint-md-up
+    max-width: 992px
     margin: 0 auto
 
-    @include breakpoint-md-up
-        max-width: 992px
-        margin: 0 auto
+  @include breakpoint-lg-up
+    max-width: 1280px
+      margin: 0 auto
 
-    @include breakpoint-lg-up
-        max-width: 1280px
-        margin: 0 auto
+
+@mixin main-button
+  background-color: #fff
+  color: $navy-blue
+  cursor: pointer
+  display: inline-block
+  font-family: Raleway, sans-serif
+  font-size: .9rem
+  font-weight: 600
+  line-height: 1
+  text-align: center
+  text-decoration: none $main-black solid
+  text-transform: capitalize
+  transition: $btn-transition

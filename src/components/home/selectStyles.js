@@ -11,6 +11,7 @@ export const customStyles = {
     boxShadow: 'none',
     border: 'none',
     borderRadius: 0,
+    padding: '.4rem',
   }),
   placeholder: (base) => ({
     ...base,
