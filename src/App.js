@@ -6,12 +6,14 @@ import {
   Route,
 } from "react-router-dom";
 import Home from './pages/Home';
+import Footer from './pages/Footer';
 
 export default function App() {
   return (
     <Router>
       <Navbar />
       <Home />
+      <Footer />
     </Router>
   );
 }
