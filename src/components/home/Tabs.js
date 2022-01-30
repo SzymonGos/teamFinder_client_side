@@ -25,8 +25,16 @@ export default function Tabs() {
         </TabsButton>
       </div>
       <div className='tabs__content'>
-        <TabPanel hidden={selectedTab !== 'map'}>map</TabPanel>
-        <TabPanel hidden={selectedTab !== 'events'}>Events</TabPanel>
+        <TabPanel
+          className='tabs__panels'
+          hidden={selectedTab !== 'map'}>
+          map
+        </TabPanel>
+        <TabPanel
+          className='tabs__panels'
+          hidden={selectedTab !== 'events'}>
+          Events
+        </TabPanel>
       </div>
     </section>
   );
