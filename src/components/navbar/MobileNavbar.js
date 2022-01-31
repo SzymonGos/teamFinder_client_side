@@ -1,5 +1,6 @@
-import React, { useRef } from 'react'
-import {  NavLink } from 'react-router-dom'
+import React, { useRef } from 'react';
+import {  NavLink } from 'react-router-dom';
+import { AiOutlineUser } from 'react-icons/ai';
 
 export default function MobileNavbar() {
 
@@ -22,10 +23,20 @@ export default function MobileNavbar() {
         <span className="line line3"></span>
       </div>
       <ul className='menu-items'>
+      <li>
+          <NavLink
+            to='/login'
+            className="mobile__login"
+            activeClassName="active"
+            onClick={() => handleChange()}
+          >
+          <AiOutlineUser className='mobile__icon'/>
+            login
+          </NavLink>
+        </li>
         <li>
           <NavLink
-            to='/home'
-            className=""
+            to='/home'    
             activeClassName="active"
             onClick={() => handleChange()}
           >
@@ -34,8 +45,7 @@ export default function MobileNavbar() {
         </li>
         <li>
           <NavLink
-            to='/map'
-            className=""
+            to='/map'    
             activeClassName="active"
             onClick={() => handleChange()}
           >
@@ -44,22 +54,11 @@ export default function MobileNavbar() {
         </li>
         <li>
           <NavLink
-            to='/about'
-            className=""
+            to='/about'    
             activeClassName="active"
             onClick={() => handleChange()}
           >
             about
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/login'
-            className=""
-            activeClassName="active"
-            onClick={() => handleChange()}
-          >
-            login
           </NavLink>
         </li>
       </ul>

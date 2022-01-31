@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import DesktopNavbar from './DesktopNavbar'
-import LoginNavbar from './loginNavbar';
-import MobileNavbar from './MobileNavbar'
+import React, { useState, useEffect } from 'react';
+import DesktopNavbar from './DesktopNavbar';
+import LoginNavbar from './LoginNavbar';
+import MobileNavbar from './MobileNavbar';
 
 export default function Navbar() {
 
