@@ -1,17 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-export default function TabsButton({
-  isActive,
-  children,
-  onClick,
-}) {
+export default function TabsButton({ isActive, children, onClick }) {
   return (
     <button
       className={`tab-btn
-      ${isActive
-          ? "focus"
-          : ""
-        }`}
+      ${isActive ? 'focus' : ''}`}
       onClick={onClick}
     >
       {children}

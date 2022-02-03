@@ -1,36 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { guestLinks } from '../../services/guestLinks'
 
 export default function DesktopNavbar() {
-
   return (
     <section className='desktop'>
       <ul className='desktop__items'>
-      <li>
-          <Link
-            to='#'
-            className="desktop__item"      
-          >
-            home
-          </Link>
-        </li>
-        <li>
-          <Link
-            to='#'
-            className="desktop__item"      
-          >
-            map
-          </Link>
-        </li>
-        <li>
-          <Link
-            to='#'
-            className="desktop__item"      
-          >
-            about
-          </Link>
-        </li>
+        {guestLinks.map((item, idx) => {
+          return (
+            <li key={idx}>
+              <Link to={`/${item.url}`} className='desktop__item'>
+                {item.text}
+              </Link>
+            </li>
+          )
+        })}
       </ul>
     </section>
-  );
+  )
 }

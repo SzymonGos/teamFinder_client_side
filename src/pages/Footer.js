@@ -1,20 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa'
+import { guestLinks } from '../services/guestLinks'
 
 export default function Footer() {
   return (
     <footer className='footer'>
       <div className='footer__info'>
         <div className='footer__logo'>
-          <h3>
-            Sportify
-          </h3>
+          <h3>Sportify</h3>
         </div>
         <div className='footer__contact'>
-          <h3>
-            Contact Us
-          </h3>
+          <h3>Contact Us</h3>
           <div>
             <p>
               Email: <br />
@@ -28,31 +25,21 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="footer__menu">
-          <ul>
-            <li>
-              <Link to='#'>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to='#'>
-                Map
-              </Link>
-            </li>
-            <li>
-              <Link to='#'>
-                About
-              </Link>
-            </li>
+        <div className='footer__menu'>
+          <ul className='footer__links'>
+            {guestLinks.map((item, idx) => {
+              return (
+                <li key={idx}>
+                  <Link to={`/${item.url}`}>{item.text}</Link>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </div>
       <div className='footer__credits'>
-        <p>
-          Copyright &#169; 2022 Sportify
-        </p>
+        <p>Copyright &#169; 2022 Sportify</p>
       </div>
     </footer>
-  );
+  )
 }

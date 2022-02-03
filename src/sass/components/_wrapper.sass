@@ -24,7 +24,7 @@
     &::placeholder
       font-weight: 200
       font-size: 1rem
-    
+
 // Filter accordion
 
 .accordion
@@ -32,9 +32,9 @@
   cursor: default
 
   &__item
-    margin: 1rem 0    
+    margin: 1rem 0
     border-bottom: 1px solid $main-black
-  
+
   &__title
     display: flex
     justify-content: space-between
@@ -54,12 +54,9 @@
 
 .tabs-wrapper
   margin-bottom: 5rem
-  
+
   .tabs
     display: flex
-
-    &__content
-      // margin: 0 1rem
 
     &__panels
       background-color: $main-white
@@ -70,7 +67,7 @@
   width: 100%
   border: none
   @include main-button
-  
+
   &:hover
     background-color: $navy-blue2
     color: $main-white
@@ -78,3 +75,20 @@
   &.focus
     background-color: $navy-blue2
     color: $main-white
+
+@include breakpoint-md-up
+  .wrapper
+    display: flex
+    flex-direction: row
+
+  .filter
+    margin-top: 0rem
+    width: 25%
+
+  .tabs-wrapper
+    width: 75%
+
+@include breakpoint-lg-up
+  .tabs
+    &__panels
+      min-height: 600px

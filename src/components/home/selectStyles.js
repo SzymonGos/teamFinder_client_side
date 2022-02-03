@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export const customStyles = {
   container: (base) => ({
@@ -19,12 +19,11 @@ export const customStyles = {
   }),
   option: (base, state) => ({
     ...base,
-    color: state.isFocused ? "#f7f7f7" : '#1a1b1f',
-    backgroundColor: state.isFocused ? "#0d172a" : 'transparent',
+    color: state.isFocused ? '#f7f7f7' : '#1a1b1f',
+    backgroundColor: state.isFocused ? '#0d172a' : 'transparent',
     '&:active': {
       backgroundColor: '#0d172a',
     },
-
   }),
   indicatorSeparator: () => ({
     display: 'none',
@@ -34,7 +33,5 @@ export const customStyles = {
     borderRadius: 0,
     boxShadow: 'none',
     border: 'none',
-    
   }),
-
 }
