@@ -12,7 +12,7 @@ module.exports = {
     filename: 'index.bundle.js',
   },
   devServer: {
-    port: 8000,
+    port: 4000,
     historyApiFallback: true,
   },
   module: {
@@ -20,9 +20,12 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use:'babel-loader',    
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: 'ts-loader',
       },
       {
         test: /\.css$/,
@@ -42,6 +45,9 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+},
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'style.css',
