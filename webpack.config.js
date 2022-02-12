@@ -20,7 +20,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use:'babel-loader',    
+        use: 'babel-loader',
       },
       {
         test: /\.tsx?$/,
@@ -46,8 +46,8 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-},
+    extensions: ['.tsx', '.ts', '.js'],
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'style.css',
