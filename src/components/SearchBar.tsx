@@ -1,5 +1,12 @@
 import Container from './Container'
-import { IconSearch, IconBallFootball, IconBallBasketball, IconBallVolleyball, IconBallTennis, IconAdjustments } from '@tabler/icons'
+import {
+  IconSearch,
+  IconBallFootball,
+  IconBallBasketball,
+  IconBallVolleyball,
+  IconBallTennis,
+  IconAdjustments,
+} from '@tabler/icons'
 
 const disciplines = [
   { id: 1, title: 'football', icon: IconBallFootball },
@@ -17,7 +24,7 @@ export default function SearchBar() {
             <IconSearch size={20} color='#a6aeb7' stroke={2} />
             <input
               type='text'
-              className=' w-[70px] p-0 focus:w-[200px] border-0 bg-gray-100 focus:ring-0 font-light'
+              className='transition-all duration-200 w-[70px] p-0 focus:w-[200px] border-0 bg-gray-100 ring-0 outline-none focus:ring-0 font-light'
               placeholder='Search...'
             />
           </label>
