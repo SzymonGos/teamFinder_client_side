@@ -24,7 +24,7 @@ export default function SearchBar() {
             <IconSearch size={20} color='#a6aeb7' stroke={2} />
             <input
               type='text'
-              className='transition-all duration-200 w-[70px] p-0 focus:w-[200px] border-0 bg-gray-100 ring-0 outline-none focus:ring-0 font-light'
+              className='transition-all duration-200 w-[70px] p-0 focus:w-[200px] border-0 bg-gray-100 outline-none focus:ring-0 font-light'
               placeholder='Search...'
             />
           </label>
