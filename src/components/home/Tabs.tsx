@@ -7,10 +7,10 @@ export default function Tabs() {
     <section className='mt-4'>
       <Container>
         <div className='col-span-full flex lg:hidden items-center gap-x-3'>
-          <button onClick={() => setOpenTab(1)} className='py-2 px-5 bg-gray-300'>
+          <button onClick={() => setOpenTab(1)} className='py-2 px-5 bg-gray-300 rounded-tr-[20px] rounded-tl-[20px]'>
             button 1
           </button>
-          <button onClick={() => setOpenTab(2)} className='py-2 px-5 bg-gray-300'>
+          <button onClick={() => setOpenTab(2)} className='py-2 px-5 bg-gray-300 rounded-tr-[20px] rounded-tl-[20px]'>
             button 2
           </button>
         </div>
