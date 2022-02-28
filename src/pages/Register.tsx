@@ -1,13 +1,17 @@
+import { useHistory } from 'react-router-dom'
 import Container from '../components/Container'
 import Slider from '../components/login/Slider'
+import PATH from '../services/paths'
 
 export default function Register() {
+  const history = useHistory()  
+
   return (
     <section className='mt-6'>
       <Container>
-      <div className='col-span-full md:col-span-6 lg:col-span-3 lg:col-start-3 lg:block lg:flex-1 items-center h-full border-2'>
-        <form className='flex flex-col w-full gap-y-10'>
-        <div className='flex flex-col'>
+        <div className='col-span-full md:col-span-6 lg:col-span-3 lg:col-start-3 lg:block lg:flex-1 items-center h-full border-2'>
+          <form className='flex flex-col w-full gap-y-10' onSubmit={() => history.push(PATH.USER)}>
+            <div className='flex flex-col'>
               <label>Name</label>
               <input type='text' placeholder='Name' />
             </div>
@@ -19,10 +23,10 @@ export default function Register() {
               <label>Password</label>
               <input type='text' placeholder='Password' />
             </div>
-            <div className='flex flex-col'>              
+            <div className='flex flex-col'>
               <input type='text' placeholder='Repeat Password' />
             </div>
-            <button>Register</button>
+            <button type='submit'>Register</button>
           </form>
         </div>
 

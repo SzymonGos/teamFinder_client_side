@@ -1,7 +1,10 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import PATH from '../../services/paths'
 import Container from '../Container'
+
 export default function Navbar() {
+  const location = useLocation()
+  console.log(location);
   return (
     <nav className='py-3 shadow-[0px_4px_4px_rgba(0,0,0,0.04),0px_1px_1px_rgba(0,0,0,0.04)]'>
       <Container>

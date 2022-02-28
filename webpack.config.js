@@ -8,12 +8,14 @@ require('dotenv').config({ path: './.env' })
 
 module.exports = {
   output: {
-    path: path.join(__dirname, '/build'),
-    filename: 'index.bundle.js',
+    path: path.resolve(__dirname, './build'),
+    filename: 'bundle.js',
+    publicPath: '/',
   },
   devServer: {
     port: 4000,
-    historyApiFallback: true,
+    historyApiFallback: true,  
+    hot: true
   },
   module: {
     rules: [
@@ -52,7 +54,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'style.css',
     }),
-    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './src', 'index.html'),
+      fileName: './index.html',
+      inject: true,
+    }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(process.env),
     }),
