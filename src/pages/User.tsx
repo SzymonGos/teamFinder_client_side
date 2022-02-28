@@ -22,12 +22,14 @@ export default function User() {
           </ul>
         </div>
         <Switch>
+          <section className='md:col-span-10'>
           <Route path={PATH.USER} exact component={Profile} />
           <Route path={PATH.CREATE_EVENT} component={CreateGame} />
           <Route path={PATH.USER_SETTINGS} component={Settings} />
           <Route path='*'>
             <Redirect to={PATH.USER} />
           </Route>
+          </section>
         </Switch>
       </Container>
     </section>
