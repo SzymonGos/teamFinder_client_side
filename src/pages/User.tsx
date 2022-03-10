@@ -1,13 +1,21 @@
-import { Link, Switch, Route, useLocation, Redirect } from 'react-router-dom'
+import { Link, Switch, Route, Redirect, useHistory } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useCookies } from 'react-cookie'
 import Container from '../components/Container'
 import PATH from '../services/paths'
 import CreateGame from '../components/user/CreateGame'
 import Settings from '../components/user/Settings'
 import Profile from '../components/user/Profile'
-import NotFound from '../components/NotFound'
 
 export default function User() {
-  const location = useLocation()
+  const history = useHistory()
+  const [cookies, setCookie, removeCookie] = useCookies()
+
+  useEffect(() => {
+    if (!cookies?.token) {
+      history.push(PATH.HOME)
+    }
+  }, [cookies?.token])
 
   return (
     <section className='mt-10'>
@@ -18,19 +26,21 @@ export default function User() {
             <Link to={PATH.CREATE_EVENT}>Add Game</Link>
             <Link to={PATH.USER}>Profile</Link>
             <Link to={PATH.USER_SETTINGS}>Settings</Link>
-            <Link to='#'>Sign Out</Link>
+            <Link to='#'>
+              <button onClick={() => removeCookie('token')}>Sign Out</button>
+            </Link>
           </ul>
         </div>
-        <Switch>
-          <section className='md:col-span-10'>
-          <Route path={PATH.USER} exact component={Profile} />
-          <Route path={PATH.CREATE_EVENT} component={CreateGame} />
-          <Route path={PATH.USER_SETTINGS} component={Settings} />
-          <Route path='*'>
-            <Redirect to={PATH.USER} />
-          </Route>
-          </section>
-        </Switch>
+        <section className='md:col-span-10'>
+          <Switch>
+            <Route path={PATH.USER} exact component={Profile} />
+            <Route path={PATH.CREATE_EVENT} component={CreateGame} />
+            <Route path={PATH.USER_SETTINGS} component={Settings} />
+            <Route path='*'>
+              <Redirect to={PATH.USER} />
+            </Route>
+          </Switch>
+        </section>
       </Container>
     </section>
   )
