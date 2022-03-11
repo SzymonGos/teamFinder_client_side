@@ -42,15 +42,16 @@ export default function Login() {
     <section className='mt-6'>
       <Container>
         <div className='col-span-full md:col-span-6 lg:col-span-3 lg:col-start-3 lg:block lg:flex-1 items-center h-full border-2'>
-          <form className='flex flex-col w-full gap-y-10' onSubmit={(e) => handleSubmit(e)}>
+          <form className='flex flex-col w-full gap-y-10' onSubmit={(e) => handleSubmit(e)} data-testid='form'>
             <div className='flex flex-col'>
-              <label>User Name</label>
+              <label>Username</label>
               <input
                 type='text'
                 placeholder='Username'
                 required
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
+                data-testid="required-username-input"
               />
             </div>
             <div className='flex flex-col'>
@@ -61,6 +62,7 @@ export default function Login() {
                 value={password}
                 required
                 onChange={(e) => setPassword(e.target.value)}
+                data-testid="required-password-input"
               />
             </div>
             <button type='submit'>Sign In</button>
