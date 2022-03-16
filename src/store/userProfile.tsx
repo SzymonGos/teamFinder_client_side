@@ -2,7 +2,7 @@ import { createState, useState } from '@hookstate/core'
 import { Persistence } from '@hookstate/persistence'
 
 interface User {
-  user: { userID: number | null; username: string; useremail: string }
+  user: { userID: number | null; username: string; useremail: string, loggedIn: boolean }
 }
 
 const initialState: User = {
@@ -10,6 +10,7 @@ const initialState: User = {
     userID: null,
     username: '',
     useremail: '',
+    loggedIn: false,
   },
 }
 
@@ -29,6 +30,7 @@ export function useStore() {
         userID: id,
         username: name,
         useremail: email,
+        loggedIn: true
       })
     },
 
@@ -36,7 +38,8 @@ export function useStore() {
       store.user.set({
         userID: null,
         username: '',
-        useremail: ''
+        useremail: '',
+        loggedIn: false
       })
     }
   }

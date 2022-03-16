@@ -16,8 +16,6 @@ export default function Login() {
   const [cookies, setCookie] = useCookies(['token'])
   const [errorMsg, setErrorMsg] = useState<string>('')
 
-  console.log(store.state.user)
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
