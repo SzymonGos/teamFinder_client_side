@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
+import { useStore } from '../store/userProfile'
 import axios from 'axios'
 import Container from '../components/Container'
 import Slider from '../components/login/Slider'
@@ -8,6 +9,7 @@ import PATH from '../services/paths'
 import API_URL from '../config/config'
 
 export default function Login() {
+  const store = useStore()
   const history = useHistory()
   const [userName, setUserName] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -24,8 +26,12 @@ export default function Login() {
 
     try {
       const resp = await axios.post(`${API_URL}/signin`, user)
-      setCookie('token', resp.data.token, { path: '/' })
-    } catch (e: any) {      
+      setCookie('token', resp.data.token, { path: '/' })  
+      let id = resp.data.id
+      let name = resp.data.username
+      let email = resp.data.email
+      store.getUserData(id, name, email)
+    } catch (e: any) {
       setErrorMsg(e.response.data.message)
     }
   }
@@ -51,7 +57,7 @@ export default function Login() {
                 required
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
-                data-testid="required-username-input"
+                data-testid='required-username-input'
               />
             </div>
             <div className='flex flex-col'>
@@ -62,7 +68,7 @@ export default function Login() {
                 value={password}
                 required
                 onChange={(e) => setPassword(e.target.value)}
-                data-testid="required-password-input"
+                data-testid='required-password-input'
               />
             </div>
             <button type='submit'>Sign In</button>
