@@ -1,6 +1,7 @@
 import { Link, Switch, Route, Redirect, useHistory } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useCookies } from 'react-cookie'
+import { useStore } from '../store/userProfile'
 import Container from '../components/Container'
 import PATH from '../services/paths'
 import CreateGame from '../components/user/CreateGame'
@@ -10,8 +11,14 @@ import axios from 'axios'
 import API_URL from '../config/config'
 
 export default function User() {
+  const store = useStore()
   const history = useHistory()
   const [cookies, setCookie, removeCookie] = useCookies()
+
+  const handleSignOut = () => {
+    removeCookie('token')
+    store.signOut()
+  }
 
   useEffect(() => {
     if (!cookies?.token) {
@@ -29,7 +36,7 @@ export default function User() {
             <Link to={PATH.USER}>Profile</Link>
             <Link to={PATH.USER_SETTINGS}>Settings</Link>
             <Link to='#'>
-              <button onClick={() => removeCookie('token')}>Sign Out</button>
+              <button onClick={handleSignOut}>Sign Out</button>
             </Link>
           </ul>
         </div>
