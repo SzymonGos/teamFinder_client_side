@@ -7,8 +7,6 @@ import PATH from '../services/paths'
 import CreateGame from '../components/user/CreateGame'
 import Settings from '../components/user/Settings'
 import Profile from '../components/user/Profile'
-import axios from 'axios'
-import API_URL from '../config/config'
 
 export default function User() {
   const store = useStore()

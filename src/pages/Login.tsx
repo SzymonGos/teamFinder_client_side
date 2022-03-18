@@ -3,18 +3,18 @@ import { useHistory } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 import { useStore } from '../store/userProfile'
 import axios from 'axios'
+import API_URL from '../config/config'
 import Container from '../components/Container'
 import Slider from '../components/login/Slider'
 import PATH from '../services/paths'
-import API_URL from '../config/config'
 
 export default function Login() {
   const store = useStore()
   const history = useHistory()
-  const [userName, setUserName] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+  const [userName, setUserName] = useState('')
+  const [password, setPassword] = useState('')
   const [cookies, setCookie] = useCookies(['token'])
-  const [errorMsg, setErrorMsg] = useState<string>('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -32,7 +32,7 @@ export default function Login() {
       let email = resp.data.email
       store.getUserData(id, name, email)
     } catch (e: any) {
-      setErrorMsg(e.response.data.message)
+      setErrorMessage(e.response.data.message)
     }
   }
 
@@ -73,7 +73,7 @@ export default function Login() {
             </div>
             <button type='submit'>Sign In</button>
           </form>
-          <div className='flex justify-center mt-2'>{errorMsg && errorMsg}</div>
+          <div className='flex justify-center mt-2'>{errorMessage && errorMessage}</div>
           <div className='mt-10 flex flex-row gap-x-10'>
             New Account ?<button onClick={() => history.push(PATH.REGISTER)}>Register</button>
           </div>
