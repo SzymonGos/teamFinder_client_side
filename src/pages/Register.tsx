@@ -31,12 +31,12 @@ export default function Register() {
   })
 
   const onInputChange = (e: any) => {
-    const { value, name } = e.target as HTMLTextAreaElement
+    const { value, name } = e.target as HTMLInputElement
 
-    setInput((prev) => ({
-      ...prev,
+    setInput({
+      ...input,
       [name]: value.trim(),
-    }))
+    })
 
     inputValidation(e)
   }
@@ -104,8 +104,6 @@ export default function Register() {
       }
     } catch (e: any) {
       setErrorMessageAPI(e.response.data.message)
-      console.error(e.response.data.message)
-      console.error(e.response.data.fieldErrors)
     }
   }
 
@@ -113,7 +111,7 @@ export default function Register() {
     <section className='mt-6'>
       <Container>
         <div className='col-span-full md:col-span-6 lg:col-span-3 lg:col-start-3 lg:block lg:flex-1 items-center h-full border-2'>
-          <form className='flex flex-col w-full gap-y-10' onSubmit={(e) => handleSubmit(e)}>
+          <form className='flex flex-col w-full gap-y-10' onSubmit={handleSubmit}>
             <div className='flex flex-col'>
               <label>Username</label>
               <input

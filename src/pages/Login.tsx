@@ -26,7 +26,7 @@ export default function Login() {
 
     try {
       const resp = await axios.post(`${API_URL}/signin`, user)
-      setCookie('token', resp.data.token, { path: '/' })  
+      setCookie('token', resp.data.token, { path: '/', maxAge: 3600 })  
       let id = resp.data.id
       let name = resp.data.username
       let email = resp.data.email
