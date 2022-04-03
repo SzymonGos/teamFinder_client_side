@@ -4,6 +4,7 @@ import axios from 'axios'
 import DatePicker from 'react-datepicker'
 import setHours from 'date-fns/setHours'
 import setMinutes from 'date-fns/setMinutes'
+import setSeconds from 'date-fns/setSeconds'
 import 'react-datepicker/dist/react-datepicker.css'
 import Container from '../Container'
 import API_URL from '../../config/config'
@@ -18,6 +19,16 @@ const disciplineOptions = [
 const durationInputs = [
   { id: 1, name: '60', value: 60 },
   { id: 2, name: '120', value: 120 },
+]
+
+const busyTimes = [
+  '2022-04-04T12:00:00',
+  '2022-04-04T13:00:00',
+  '2022-04-02T12:00:00',
+  '2022-04-05T12:00:00',
+  '2022-04-05T13:00:00',
+  '2022-04-05T14:00:00',
+  '2022-04-05T15:00:00',
 ]
 
 interface NewGame {
@@ -38,7 +49,7 @@ export default function User() {
   const [venueError, setVenueError] = useState('')
   const [venueBusyTerms, setVenueBusyTerms] = useState<any[]>([])
   const [startDate, setStartDate] = useState(setHours(setMinutes(new Date(), 0), 12))
-
+  const [excludedTimes, setExcludedTimes] = useState<any>([])
   const [newGameInputs, setNewGameInputs] = useState<NewGame>({
     name: '',
     description: '',
@@ -50,18 +61,7 @@ export default function User() {
     date: '',
     hour: null,
   })
-  // console.log('__terms: ', venueBusyTerms)
-  console.log(newGameInputs)
-
-  // console.log('__datePicked: ', startDate);
-  // console.log('__onlyDate: ', startDate.toLocaleDateString());
-  // console.log('__onlyTime: ', startDate.toTimeString().slice(0,2));
-
-  // localdate splitting test
-  // const time = '2022-02-23T17:00:00'
-  // console.log(time.replace(/T.*/,'').split('-').reverse().join('/'));
-  // console.log(time.replace(/.*T/,'').split('').join('').slice(0,2));
-
+  
   const handleGetVenues = async (e: any) => {
     venues.filter((item) => item.id == newGameInputs.venueId).map((e) => setVenueBusyTerms(e.busyTerms))
     e.preventDefault()
@@ -89,11 +89,11 @@ export default function User() {
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     const config = {
-      headers: { Authorization: `Bearer ${cookies?.token}` }      
+      headers: { Authorization: `Bearer ${cookies?.token}` },
     }
     try {
       const resp = await axios.post(`${API_URL}/games`, newGameInputs, config)
-      if (resp.status === 201){
+      if (resp.status === 201) {
         alert('Thank you! Your game has been created :)')
         setNewGameInputs({
           name: '',
@@ -110,6 +110,29 @@ export default function User() {
     } catch (e: any) {
       console.error(e.response.data.message)
     }
+  }
+
+  const filterPassedTime = (time: any) => {
+    const currentDate = new Date()
+    const selectedDate = new Date(time)
+
+    return currentDate.getTime() < selectedDate.getTime()
+  }
+
+  const getExcludedTimes = (date: Date) => {
+    setExcludedTimes(
+      venueBusyTerms
+        .filter(
+          (x) =>
+            x.replace(/T.*/, '').split('-').reverse().join('/') == date.toLocaleDateString('en-GB'),
+        )
+        .map((e) =>
+          setHours(
+            setMinutes(setSeconds(new Date(), 0), 0),
+            e.replace(/.*T/, '').split('').join('').slice(0, 2),
+          ),
+        ),
+    )
   }
 
   useEffect(() => {
@@ -227,15 +250,18 @@ export default function User() {
               showTimeSelect
               onChange={(date: Date) => {
                 setStartDate(date)
+                getExcludedTimes(date)
                 setNewGameInputs({
                   ...newGameInputs,
-                  date: startDate.toLocaleDateString(),
+                  date: startDate.toLocaleDateString('en-GB'),
                   hour: parseInt(startDate.toTimeString().slice(0, 2)),
                 })
               }}
-              excludeTimes={[
-                setHours(setMinutes(new Date(), 0), 17),
-              ]}
+              excludeTimes={excludedTimes}
+              minDate={new Date()}
+              minTime={setHours(setMinutes(new Date(), 0), 6)}
+              maxTime={setHours(setMinutes(new Date(), 0), 22)}
+              filterTime={filterPassedTime}
               timeIntervals={60}
               timeFormat='HH:mm'
               dateFormat='dd/MM/yyyy HH:mm'
