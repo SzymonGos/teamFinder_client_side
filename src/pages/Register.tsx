@@ -6,12 +6,7 @@ import Container from '../components/Container'
 import Slider from '../components/login/Slider'
 import PATH from '../services/paths'
 
-interface Error {
-  username: string
-  email: string
-  password: string
-  matchingPassword: string
-}
+
 
 export default function Register() {
   const history = useHistory()
@@ -23,7 +18,7 @@ export default function Register() {
     matchingPassword: '',
   })
 
-  const [error, setError] = useState<Error>({
+  const [error, setError] = useState({
     username: '',
     email: '',
     password: '',
