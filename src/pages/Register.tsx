@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
-import API_URL from '../config/config'
+import {API_URL} from '../config/config'
 import Container from '../components/Container'
 import Slider from '../components/login/Slider'
 import PATH from '../services/paths'

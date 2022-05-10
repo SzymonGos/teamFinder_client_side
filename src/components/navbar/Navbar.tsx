@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 import { useStore } from '../../store/userProfile'
 import PATH from '../../services/paths'
 import Container from '../Container'
 
 export default function Navbar() {
   const store = useStore()
+  const [cookies, setCookie, removeCookie] = useCookies()
 
   return (
     <nav className='py-3 shadow-[0px_4px_4px_rgba(0,0,0,0.04),0px_1px_1px_rgba(0,0,0,0.04)]'>
@@ -13,7 +15,7 @@ export default function Navbar() {
           <div className='col-span-2'>TeamsFinder</div>
         </Link>
         <div className='col-span-1 col-start-4 sm:col-start-12 sm:col-sapn-1 flex justify-end'>
-          {store.state.user.loggedIn ? (
+          {cookies?.token ? (
             <Link to={PATH.USER}>
               <div className=''>{store.state.user.username}</div>
             </Link>

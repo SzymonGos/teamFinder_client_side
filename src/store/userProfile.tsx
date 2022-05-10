@@ -5,15 +5,14 @@ import { useCookies } from 'react-cookie'
 import PATH from '../services/paths'
 
 interface User {
-  user: { userID: number | null; username: string; useremail: string; loggedIn: boolean }
+  user: { userID: number | null; username: string; useremail: string; }
 }
 
 const initialState: User = {
   user: {
     userID: null,
     username: '',
-    useremail: '',
-    loggedIn: false,
+    useremail: '',    
   },
 }
 
@@ -35,8 +34,7 @@ export function useStore() {
       store.user.set({
         userID: id,
         username: name,
-        useremail: email,
-        loggedIn: true,
+        useremail: email,        
       })
     },
 
@@ -45,8 +43,7 @@ export function useStore() {
       store.user.set({
         userID: null,
         username: '',
-        useremail: '',
-        loggedIn: false,
+        useremail: '',        
       })
       history.push(PATH.HOME)
     },

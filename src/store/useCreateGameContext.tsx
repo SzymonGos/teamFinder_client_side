@@ -5,7 +5,7 @@ import axios from 'axios'
 import setHours from 'date-fns/setHours'
 import setMinutes from 'date-fns/setMinutes'
 import setSeconds from 'date-fns/setSeconds'
-import API_URL from '../config/config'
+import { API_URL } from '../config/config'
 import PATH from '../services/paths'
 
 const CreateGameContext = React.createContext<States>(null!)

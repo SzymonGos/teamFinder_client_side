@@ -1,13 +1,23 @@
-import { Link, Switch, Route, Redirect } from 'react-router-dom'
+import { Link, Switch, Route, Redirect, useHistory } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 import { useStore } from '../store/userProfile'
 import Container from '../components/Container'
 import PATH from '../services/paths'
 import CreateGame from '../components/user/CreateGame'
 import Settings from '../components/user/Settings'
 import Profile from '../components/user/Profile'
+import { useEffect } from 'react'
 
 export default function User() {
   const store = useStore()
+  const history = useHistory()
+  const [cookies, setCookie, removeCookie] = useCookies()
+
+  useEffect(() => {
+    if(!cookies?.token){
+      history.push(PATH.HOME)
+    }
+  }, [cookies?.token])
 
   return (
     <section className='mt-10'>
